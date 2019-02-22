@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  REACT CAPITALS: Loan and Digital Asset Clearing House and Brokerage
+{% endblock title %}
+
+{% block navbar %}
+{% include "snippets/nav.html" %}
+{% endblock navbar %}
+
+{% block content %}
+<div class="hero">
+  <img src="{% static 'img/loan_hero.jpg' %}" alt="react capitals hero image for home screen">
+  <div class="captions">
+    <h3>Digital Asset Clearinghouse and Brokerage</h3>
+    <div class="divider"></div>
+    <p>
+        React Capitals specializes in Long term loans and OTC services world-wide. In the past few years, 
+        the Loan/OTC market has undergone a significant and unfavorable transformation. Due
+         to this transformation, the person-to-person Loan/OTC space has become overcrowded, 
+         filled with spoofed orders, clogged with fraud, and littered with inexperienced 
+         brokers. React Capital's primary goal is to provide a professional Loan/trading 
+         experience to our clients in a manner that is safe and tailored to the demands 
+         of the client.
+    </p>
+  </div>
+</div>
+<div class="btc-rates row">
+  <div class="btcwdgt-price" bw-cash="true" bw-theme="light"></div>
+  <div class="btcwdgt-price" bw-cash="true" bw-theme="light" bw-cur="jpy"></div>
+  <div class="btcwdgt-price" bw-cash="true" bw-theme="light" bw-cur="eur"></div>
+  <div class="btcwdgt-pool" bw-theme="light"></div>
+</div>
+<section class='container-fluid'>
+   <div class="row">
+     <div class="col s12 m7">
+        <h3>
+            OTC Trading Has Become a Vital Aspect of The Digital Asset Trading Space.
+        </h3>
+        <p>
+            Due to the deflationary aspect and past performance of most digital assets: 
+            the institutional and high net worth demand for these assets has never been 
+            higher, but even the most popular exchanges are unable to meet supply and 
+            demand because of liquidity issues. Liquidity issues, that exist on traditional 
+            exchanges, create a massive restriction to any large investor. To combat this 
+            restriction, many investors will take advantage of the booming OTC market to 
+            buy or sell these assets.
+        </p>
+     </div>
+     <div class="col s12 m5">
+        <div class="btcwdgt-chart" bw-cash="true"></div>
+     </div>
+   </div>
+</section>
+{% endblock %}
+{% block footer %}
+  {% include 'snippets/footer.html' %}
+{% endblock footer %}
+{% block extra-js %}
+<script>
+    (function(b,i,t,C,O,I,N) {
+        window.addEventListener('load',function() {
+        if(b.getElementById(C))return;
+        I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+        I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+        },false)
+    })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+</script>
+{% endblock extra-js %}
+
+{% for coin in crypto_data %}
+<div class="btc-card">
+  <h3>
+    {{coin.name}}
+  </h3>
+  <div class="btc-info">
+    <p>
+      USD: {{coin.price_usd}}
+    </p>
+    <div class="divider"></div>
+    <p>
+      BTC: {{coin.price_btc}}
+    </p>
+    <div class="divider"></div>
+    <p>
+      {{coin.percent_change_1h}} %/hr
+    </p>
+  </div>
+</div>
+{% endfor %}

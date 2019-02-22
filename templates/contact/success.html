@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  REACT CAPITALS: Feel free to get in touch
+{% endblock title %}
+
+{% block navbar %}
+{% include "snippets/nav.html" %}
+{% endblock navbar %}
+{% block content %}
+<div class="hero-contact">
+    <img src="{% static 'img/loan_hero.jpg' %}" alt="" height="120px" width='100%'>
+</div>
+<div class="conainer">
+        <br>
+        <br>
+    <div class="row">
+        <div class='col m6 offset-m3'>
+            <h1 class='center-align green-text'>Message Successful</h1>
+            <h4 class='center-align'>Hello {{contact.short_name}},</h4>
+            <p class='center-align'> we've got your mail and would reply you shorthly!</p>
+        </div>
+    </div>
+    <br>
+    <br><br>
+</div>
+
+{% endblock %}
+{% block footer %}
+  {% include 'snippets/footer.html' %}
+{% endblock footer %}
